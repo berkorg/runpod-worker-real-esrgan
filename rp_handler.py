@@ -158,7 +158,7 @@ def upscale(
         upscaled_image_path = f'{TMP_PATH}/upscaled_{uuid.uuid4()}.png'
         result_image.save(upscaled_image_path)
 
-        svg_save_path = f'{TMP_PATH}/upscaled_{uuid.uuid4()}.jpg'
+        svg_save_path = f'{TMP_PATH}/upscaled_{uuid.uuid4()}.svg'
         convert_to_svg(upscaled_image_path, svg_save_path, filter_speckle, color_precision, layer_difference,
                        corner_threshold, length_threshold, max_iterations, splice_threshold, path_precision)
 
@@ -181,8 +181,7 @@ def convert_to_svg(image_path, output_path, filter_speckle=4,         # default:
                    path_precision=3          # default: 8):
                    ):
     try:
-        vtracer.convert_image_to_svg_py(image_path, output_path, filter_speckle, color_precision, layer_difference,
-                                        corner_threshold, length_threshold, max_iterations, splice_threshold, path_precision)
+        vtracer.convert_image_to_svg_py(image_path, output_path)
     except Exception as e:
         logger.error(f'An exception was raised: {e}')
 
