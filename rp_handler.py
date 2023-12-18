@@ -181,7 +181,19 @@ def convert_to_svg(image_path, output_path, filter_speckle=4,         # default:
                    path_precision=3          # default: 8):
                    ):
     try:
-        vtracer.convert_image_to_svg_py(image_path, output_path)
+        vtracer.convert_image_to_svg_py(image_path=image_path,
+                                        output_path=output_path,
+                                        color_mode="color",
+                                        layer_mode="stacked",
+                                        path_mode="spline",
+                                        filter_speckle=filter_speckle,
+                                        color_precision=color_precision,
+                                        layer_difference=layer_difference,
+                                        corner_threshold=corner_threshold,
+                                        length_threshold=length_threshold,
+                                        max_iterations=max_iterations,
+                                        splice_threshold=splice_threshold,
+                                        path_precision=path_precision)
     except Exception as e:
         logger.error(f'An exception was raised: {e}')
 
