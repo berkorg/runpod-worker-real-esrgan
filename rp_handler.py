@@ -162,7 +162,7 @@ def upscale(
         convert_to_svg(upscaled_image_path, svg_save_path, filter_speckle, color_precision, layer_difference,
                        corner_threshold, length_threshold, max_iterations, splice_threshold, path_precision)
 
-        with open(svg_save_path, 'r') as svg_file:
+        with open(svg_save_path, 'r', encoding="utf-8") as svg_file:
             svg_data = svg_file.read()
 
         # Clean up temporary images
