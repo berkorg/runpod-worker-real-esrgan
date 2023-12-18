@@ -259,24 +259,23 @@ def upscaling_api(input):
         source_file.write(source_image)
 
     try:
-        result_svg_string = upscale(
-            source_image_path,
-            source_file_extension,
-            model_name,
-            outscale,
-            face_enhance,
-            tile,
-            tile_pad,
-            pre_pad,
-            half,
-            filter_speckle,
-            color_precision,
-            layer_difference,
-            corner_threshold,
-            length_threshold,
-            max_iterations,
-            splice_threshold,
-            path_precision
+        result_svg_string = upscale(source_image_path=source_image_path,
+                                    image_extension=source_file_extension,
+                                    model_name=model_name,
+                                    outscale=outscale,
+                                    face_enhance=face_enhance,
+                                    tile=tile,
+                                    tile_pad=tile_pad,
+                                    pre_pad=pre_pad,
+                                    half=half,
+                                    filter_speckle=filter_speckle,
+                                    color_precision=color_precision,
+                                    layer_difference=layer_difference,
+                                    corner_threshold=corner_threshold,
+                                    length_threshold=length_threshold,
+                                    max_iterations=max_iterations,
+                                    splice_threshold=splice_threshold,
+                                    path_precision=path_precision
         )
     except Exception as e:
         logger.error(f'An exception was raised: {e}')
