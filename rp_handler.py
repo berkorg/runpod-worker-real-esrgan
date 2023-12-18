@@ -158,7 +158,7 @@ def upscale(
         upscaled_image_path = f'{TMP_PATH}/upscaled_{uuid.uuid4()}.png'
         result_image.save(upscaled_image_path)
 
-        svg_save_path = f'{TMP_PATH}/upscaled_{uuid.uuid4()}.svg'
+        svg_save_path = f'{TMP_PATH}/upscaled_{uuid.uuid4()}.jpg'
         convert_to_svg(upscaled_image_path, svg_save_path, filter_speckle, color_precision, layer_difference,
                        corner_threshold, length_threshold, max_iterations, splice_threshold, path_precision)
 
