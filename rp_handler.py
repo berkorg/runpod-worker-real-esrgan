@@ -159,8 +159,17 @@ def upscale(
         result_image.save(upscaled_image_path)
 
         svg_save_path = f'{TMP_PATH}/upscaled_{uuid.uuid4()}.svg'
-        convert_to_svg(upscaled_image_path, svg_save_path, filter_speckle, color_precision, layer_difference,
-                       corner_threshold, length_threshold, max_iterations, splice_threshold, path_precision)
+        convert_to_svg(image_path = upscaled_image_path,
+                          out_path = svg_save_path,
+                          filter_speckle = filter_speckle,
+                          color_precision = color_precision,
+                          layer_difference = layer_difference,
+                          corner_threshold = corner_threshold,
+                          length_threshold = length_threshold,
+                          max_iterations = max_iterations,
+                          splice_threshold = splice_threshold,
+                          path_precision = path_precision)
+        
 
         with open(svg_save_path, 'r', encoding="utf-8") as svg_file:
             svg_data = svg_file.read()
@@ -171,7 +180,7 @@ def upscale(
         return svg_data
 
 
-def convert_to_svg(image_path, output_path, filter_speckle=4,         # default: 4
+def convert_to_svg(image_path, out_path, filter_speckle=4,         # default: 4
                    color_precision=6,        # default: 6
                    layer_difference=16,      # default: 16
                    corner_threshold=60,      # default: 60
@@ -182,10 +191,7 @@ def convert_to_svg(image_path, output_path, filter_speckle=4,         # default:
                    ):
     try:
         vtracer.convert_image_to_svg_py(image_path=image_path,
-                                        output_path=output_path,
-                                        color_mode="color",
-                                        layer_mode="stacked",
-                                        path_mode="spline",
+                                        out_path=out_path,
                                         filter_speckle=filter_speckle,
                                         color_precision=color_precision,
                                         layer_difference=layer_difference,
