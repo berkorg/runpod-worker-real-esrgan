@@ -30,7 +30,7 @@ logger = RunPodLogger()
 def upscale(
         source_image_path,
         image_extension,
-        model_name='RealESRGAN_x4plus_anime_6B',
+        model_name='RealESRGAN_x4plus',
         outscale=2,
         face_enhance=False,
         tile=0,
@@ -142,7 +142,13 @@ def upscale(
     )
 
     img = cv2.imread(source_image_path, cv2.IMREAD_UNCHANGED)
-    img = cv2.resize(img, (256, 256))
+    height, width = img.shape[:2]
+    shortest_side = min(height, width)
+    scale_factor = 512 / shortest_side
+    new_width = int(width * scale_factor)
+    new_height = int(height * scale_factor)
+
+    img = cv2.resize(img, (new_width, new_height))
 
     if img is None:
         raise RuntimeError(f'Source image ({source_image_path}) is corrupt')
